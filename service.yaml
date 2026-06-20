@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: spring-app-service
+  labels:
+    app: spring-app-duoc
+spec:
+  type: ClusterIP
+  selector:
+    app: spring-app-duoc
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080

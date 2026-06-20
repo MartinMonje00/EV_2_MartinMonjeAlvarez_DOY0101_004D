@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app-deployment
+  labels:
+    app: spring-app-duoc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-app-duoc
+  template:
+    metadata:
+      labels:
+        app: spring-app-duoc
+    spec:
+      containers:
+        - name: spring-app-container
+          image: spring-app-duoc:v1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
